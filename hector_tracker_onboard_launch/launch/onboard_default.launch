@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="lidar_filter_target_frame" default="odom"/>
+
+  <!--
+  This launch file starts the default onboard setup for the robot that is independent of the scenario.
+  No drivers or scenario specific nodes should be started here, as this launch file is used both in
+  simulation and on real robot!
+  -->
+
+  <!-- Opmode publisher -->
+  <!--<node pkg="argo_opmode_publisher" type="opmode_publisher" name="opmode_publisher" />-->
+
+  <!--Worldmodel-->
+  <!--<include file="$(find hector_object_tracker)/launch/object_tracker_argos.launch"/>-->
+
+  <!--Arm Motion planning-->
+  <include file="$(find hector_tracker_robot_moveit_config)/launch/move_group.launch"/>
+
+  <!--vision and detection-->
+  <!--<include file="$(find argo_onboard_launch)/launch/vision.launch"/>-->
+
+  <!--LIDAR processing and navigation-->
+  <!--<include file="$(find argo_nav_launch)/launch/navigation.launch"/>-->
+  
+  <include file="$(find hector_sensor_proc_launch)/launch/lidar_proc.launch">
+    <arg name="lidar_filter_target_frame" value="$(arg lidar_filter_target_frame)"/>
+  </include>
+
+  <!--<include file="$(find argo_onboard_launch)/launch/icp_mapper.launch"/>-->
+  <!--<include file="$(find argo_onboard_launch)/launch/worldmodel.launch"/>-->
+  
+  <!--<include file="$(find elevation_mapping)/launch/argo_setup.launch"/>-->
+
+  <!--<include file="$(find navigation_collision_checker)/launch/default.launch"/>-->
+
+  <!--<include file="$(find flexbe_launch)/launch/behavior_onboard.launch"/>-->
+
+  <!-- Standard heat detection (not used for ARGOS -->
+  <!--<include file="$(find hector_heat_detection)/launch/heat_detection.launch" />-->
+
+  <!--<include file="$(find vigir_simple_joint_pan)/launch/joint_pan_sub.launch"/>-->
+<!--
+  <include file="$(find argo_detection_image_server)/launch/detection_image_server.launch" />
+  <include file="$(find argo_mission_report)/launch/mission_report.launch" />
+  <include file="$(find argo_event_monitor)/launch/event_monitor.launch" />
+  <include file="$(find argo_path_annotator)/launch/path_annotator.launch" />
+-->
+</launch>
