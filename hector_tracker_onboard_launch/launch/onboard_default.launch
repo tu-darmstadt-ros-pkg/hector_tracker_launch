@@ -33,9 +33,19 @@
   
   <include file="$(find vehicle_controller)/launch/bertl_controller.launch" />
   
+  <rosparam file="$(find hector_tracked_vehicles_self_filter)/config/self_filter_hector_tracker.yaml" command="load" ns="nav_lidar_self_filter_lidar" />    
   <include file="$(find hector_sensor_proc_launch)/launch/lidar_proc.launch">
-    <arg name="lidar_filter_target_frame" value="$(arg lidar_filter_target_frame)"/>
+    <arg name="scan_topic" value="/spin_laser/scan"/>
   </include>
+  
+  <node pkg="vigir_cloud_to_planar_scan" type="periodic_cloud_aggregator_node" name="laserscan_to_aggregated_cloud" output="screen" respawn="true">
+    <remap from="cloud" to="/scan_cloud_filtered" />
+    <remap from="cloud_out" to="/scan_cloud_aggregated" />    
+    <param name="publish_frequency_hz" value="1" />
+    <param name="target_frame" value="odom" />
+  </node>
+  
+  <include file="$(find hector_onboard_launch)/launch/geometry_worldmodel.launch"/>
 
   <!--<include file="$(find argo_onboard_launch)/launch/icp_mapper.launch"/>-->
   <!--<include file="$(find argo_onboard_launch)/launch/worldmodel.launch"/>-->
