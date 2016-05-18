@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Hector tracker launch by tu-darmstadt-ros-pkg</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/tu-darmstadt-ros-pkg/hector_tracker_launch">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/tu-darmstadt-ros-pkg/hector_tracker_launch/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/tu-darmstadt-ros-pkg/hector_tracker_launch/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Hector tracker launch</h1>
+          <p>High level launch files for the hector tracker robot</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/tu-darmstadt-ros-pkg">tu-darmstadt-ros-pkg</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base Motion</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>/cmd_vel</td>
+<td>geometry_msgs/Twist</td>
+<td>Commanded velocity (will be filtered by vehicle_controller</td>
+</tr>
+<tr>
+<td>/cmd_vel_raw</td>
+<td>geometry_msgs/Twist</td>
+<td>Commanded velocity to robot base (directly applied)</td>
+</tr>
+<tr>
+<td>/move_base/simple_goal</td>
+<td>geometry_msgs/PoseStamped</td>
+<td>Goal for robot to drive to (mainly used from rviz)</td>
+</tr>
+<tr>
+<td>/drivepath</td>
+<td>nav_msgs/Path</td>
+<td>Path planned for robot to follow</td>
+</tr>
+<tr>
+<td><strong>Arm Motion</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>/tracker_controllers/arm_traj_controller/follow_joint_trajectory/goal</td>
+<td><a href="https://github.com/ros-controls/control_msgs/blob/indigo-devel/control_msgs/action/FollowJointTrajectory.action">control_msgs/FollowJointTrajectoryAction</a></td>
+<td>Action interface for commanding arm trajectories</td>
+</tr>
+<tr>
+<td>/tracker_controllers/arm_traj_controller/command</td>
+<td><a href="http://docs.ros.org/jade/api/trajectory_msgs/html/msg/JointTrajectory.html">trajectory_msgs/JointTrajectory</a></td>
+<td>Topic interface for commanding arm trajectories</td>
+</tr>
+<tr>
+<td>/tracker_controllers/sensor_head_traj_controller/follow_joint_trajectory/goal</td>
+<td><a href="https://github.com/ros-controls/control_msgs/blob/indigo-devel/control_msgs/action/FollowJointTrajectory.action">control_msgs/FollowJointTrajectoryAction</a></td>
+<td>Action interface for commanding sensor head trajectories</td>
+</tr>
+<tr>
+<td>/tracker_controllers/sensor_head_traj_controller/command</td>
+<td><a href="http://docs.ros.org/jade/api/trajectory_msgs/html/msg/JointTrajectory.html">trajectory_msgs/JointTrajectory</a></td>
+<td>Topic interface for commanding sensor head trajectories</td>
+</tr>
+</tbody>
+</table>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
