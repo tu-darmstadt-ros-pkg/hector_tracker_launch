@@ -140,12 +140,63 @@
 <tr>
 <td>/arm_thermal_cam/image</td>
 <td>sensor_msgs/Image</td>
-<td>Image from thermal camera</td>
+<td>Image from thermal camera (Float temp value per pixel)</td>
 </tr>
 <tr>
 <td>/gripper_cam/image_raw</td>
 <td>sensor_msgs/Image</td>
 <td>Image from gripper camera</td>
+</tr>
+<tr>
+<td>/spin_laser/scan</td>
+<td>sensor_msgs/LaserScan</td>
+<td>(Unfiltered) spinning LIDAR scan</td>
+</tr>
+<tr>
+<td>/stab_laser/scan</td>
+<td>sensor_msgs/LaserScan</td>
+<td>(Unfiltered) stabilized LIDAR scan</td>
+</tr>
+<tr>
+<td><strong>Processed Sensor Data</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>/arm_thermal_cam/image_converted</td>
+<td>sensor_msgs/Image</td>
+<td>Thermal image in 8bit grayscale format</td>
+</tr>
+<tr>
+<td>/move_group/scan_filtered</td>
+<td>sensor_msgs/LaserScan</td>
+<td>Scan filtered for shadow, intensity and distance (NOT self filtered)</td>
+</tr>
+<tr>
+<td>/move_group/scan_self_filtered</td>
+<td>sensor_msgs/LaserScan</td>
+<td>Scan filtered for shadow, intensity, distance and self seeing</td>
+</tr>
+<tr>
+<td>/scan_cloud_aggregated</td>
+<td>sensor_msgs/PointCloud2</td>
+<td>Aggregated cloud from LIDAR at 1Hz (odom frame)</td>
+</tr>
+<tr>
+<td><strong>Worldmodel Aggregated Data</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>/worldmodel_main/grid_map_low_level</td>
+<td>nav_msgs/OccupancyGrid</td>
+<td>Grid map generated from Octomap relative to base_link 0.15m to 0.7m slice <strong>(used for 2D map currently)</strong>
+</td>
+</tr>
+<tr>
+<td>/worldmodel_main/grid_map_upper_mid_level</td>
+<td>nav_msgs/OccupancyGrid</td>
+<td>Grid map generated from Octomap relative to base_link 0.7m to 1.5m slice</td>
 </tr>
 </tbody>
 </table>
