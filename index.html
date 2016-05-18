@@ -68,6 +68,11 @@
 <td>Goal for robot to drive to (mainly used from rviz)</td>
 </tr>
 <tr>
+<td>/move_base/goal</td>
+<td>hector_move_base_msgs/MoveBaseActionGoal</td>
+<td>Goal for robot to drive to (to be changed back to standard Action interface)</td>
+</tr>
+<tr>
 <td>/drivepath</td>
 <td>nav_msgs/Path</td>
 <td>Path planned for robot to follow</td>
@@ -76,6 +81,11 @@
 <td><strong>Arm Motion</strong></td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td>/move_group/goal</td>
+<td><a href="http://docs.ros.org/api/moveit_msgs/html/action/MoveGroup.html">moveit_msgs/MoveGroupActionGoal</a></td>
+<td>Action interface for commanding arm motion (standard MoveIt! move_group interface)</td>
 </tr>
 <tr>
 <td>/tracker_controllers/arm_traj_controller/follow_joint_trajectory/goal</td>
