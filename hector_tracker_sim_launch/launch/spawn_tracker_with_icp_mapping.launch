@@ -6,7 +6,7 @@
   
   <include file="$(find hector_tracker_onboard_launch)/launch/onboard_default.launch"/> 
     
-  <arg name="online_mapping" default="false"/>
+  <arg name="online_mapping" default="true"/>
     
   <include file="$(find hector_onboard_launch)/launch/icp_mapper.launch">
     <arg name="online_mapping" value="$(arg online_mapping)"/>
