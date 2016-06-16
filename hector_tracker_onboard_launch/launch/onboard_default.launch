@@ -59,7 +59,9 @@
   
   <include file="$(find hector_camera_joint_controller)/launch/hector_roll_tilt_lidar_mount.launch"/>
   <include file="$(find hector_camera_joint_controller)/launch/hector_pan_tilt_sensor_head.launch"/>
-
+  
+  <include file="$(find elevation_mapping)/launch/hector_tracker_setup.launch"/>
+ 
   
   <!--<include file="$(find argo_onboard_launch)/launch/icp_mapper.launch"/>-->
   <!--<include file="$(find argo_onboard_launch)/launch/worldmodel.launch"/>-->
