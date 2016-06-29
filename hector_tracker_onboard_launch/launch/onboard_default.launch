@@ -26,6 +26,7 @@
   
   <!--vision and detection-->
   <!--<include file="$(find argo_onboard_launch)/launch/vision.launch"/>-->
+  <include file="$(find hector_image_rotate)/launch/image_rotate_default.launch"/>
 
   <!--LIDAR processing and navigation-->
   <!--<include file="$(find argo_nav_launch)/launch/navigation.launch"/>-->
