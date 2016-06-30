@@ -60,7 +60,7 @@
   
   <include file="$(find hector_onboard_launch)/launch/trajectory_server.launch"/>
   
-  <include file="$(find hector_camera_joint_controller)/launch/hector_roll_tilt_lidar_mount.launch"/>
+  <!--<include file="$(find hector_camera_joint_controller)/launch/hector_roll_tilt_lidar_mount.launch"/>-->
   <include file="$(find hector_camera_joint_controller)/launch/hector_pan_tilt_sensor_head.launch"/>
 
   <include file="$(find flexbe_onboard)/launch/behavior_onboard.launch" />
