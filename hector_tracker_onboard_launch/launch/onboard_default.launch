@@ -31,11 +31,13 @@
   <!--LIDAR processing and navigation-->
   <!--<include file="$(find argo_nav_launch)/launch/navigation.launch"/>-->
   
-  <include file="$(find hector_move_base)/launch/hector_move_base_bertl.launch">
-    <arg name="use_alternate_planner" value="false" />  
-    <arg name="map_topic" value="/scanmatcher_map" />
-  </include>
+  <include file="$(find map_combiner)/launch/map_combiner.launch"/>
   
+  <include file="$(find  hector_move_base)/launch/hector_move_base_bertl.launch">
+    <arg name="use_alternate_planner" value="false" />  
+    <arg name="map_topic" value="/dynamic_map" />
+  </include>
+
   <include file="$(find vehicle_controller)/launch/bertl_controller.launch">
     <arg name="state_topic" value="/odom" />
   </include>
