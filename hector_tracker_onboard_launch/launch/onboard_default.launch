@@ -26,13 +26,14 @@
   
   <!--vision and detection-->
   <!--<include file="$(find argo_onboard_launch)/launch/vision.launch"/>-->
+  <include file="$(find hector_image_rotate)/launch/image_rotate_default.launch"/>
 
   <!--LIDAR processing and navigation-->
   <!--<include file="$(find argo_nav_launch)/launch/navigation.launch"/>-->
   
   <include file="$(find hector_move_base)/launch/hector_move_base_bertl.launch">
     <arg name="use_alternate_planner" value="false" />  
-    <arg name="map_topic" value="/worldmodel_main/grid_map_low_level" />
+    <arg name="map_topic" value="/scanmatcher_map" />
   </include>
   
   <include file="$(find vehicle_controller)/launch/bertl_controller.launch">
@@ -61,6 +62,8 @@
   
   <include file="$(find hector_camera_joint_controller)/launch/hector_roll_tilt_lidar_mount.launch"/>
   <include file="$(find hector_camera_joint_controller)/launch/hector_pan_tilt_sensor_head.launch"/>
+
+  <include file="$(find flexbe_onboard)/launch/behavior_onboard.launch" />
   
   <include file="$(find elevation_mapping)/launch/hector_tracker_setup.launch"/>
  

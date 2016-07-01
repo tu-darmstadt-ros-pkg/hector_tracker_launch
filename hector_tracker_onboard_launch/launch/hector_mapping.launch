@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <include file="$(find hector_onboard_launch)/launch/mapping.launch">
+    <arg name="pub_map_odom_transform" value="true"/>
+    <arg name="scan_topic" value="/stab_laser/scan" />
+    <arg name="odom_frame" value="odom" />    
+  </include>  
+</launch>
+  
