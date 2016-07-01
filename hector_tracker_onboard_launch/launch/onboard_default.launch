@@ -33,7 +33,7 @@
   
   <include file="$(find hector_move_base)/launch/hector_move_base_bertl.launch">
     <arg name="use_alternate_planner" value="false" />  
-    <arg name="map_topic" value="/worldmodel_main/grid_map_low_level" />
+    <arg name="map_topic" value="/scanmatcher_map" />
   </include>
   
   <include file="$(find vehicle_controller)/launch/bertl_controller.launch">
