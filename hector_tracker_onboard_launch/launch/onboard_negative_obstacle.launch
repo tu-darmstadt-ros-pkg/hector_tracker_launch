@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="lidar_filter_target_frame" default="odom"/>
+  
+  <node pkg="tf" type="static_transform_publisher" name="world_map_broadcaster" args="0 0 0 0 0 0 world map 100"/>
+
+  <!--
+  This launch file starts the default onboard setup for the robot that is independent of the scenario.
+  No drivers or scenario specific nodes should be started here, as this launch file is used both in
+  simulation and on real robot!
+  -->
+
+  <!-- Opmode publisher -->
+  <!--<node pkg="argo_opmode_publisher" type="opmode_publisher" name="opmode_publisher" />-->
+
+  <!--Worldmodel-->
+  <!--<include file="$(find hector_object_tracker)/launch/object_tracker_argos.launch"/>-->
+
+  <!--Arm Motion planning-->
+  <include file="$(find hector_tracker_robot_moveit_config)/launch/move_group.launch"/>
+  
+  <include file="$(find hector_object_tracker)/launch/object_tracker.launch"/>
+  <include file="$(find hector_thermal_self_filter)/launch/thermal_self_filter_hector_tracker.launch"/>
+  
+  <!--vision and detection-->
+  <!--<include file="$(find argo_onboard_launch)/launch/vision.launch"/>-->
+
+  <!--LIDAR processing and navigation-->
+  <!--<include file="$(find argo_nav_launch)/launch/navigation.launch"/>-->
+  
+  <include file="$(find hector_move_base)/launch/hector_move_base_bertl.launch">
+    <arg name="use_alternate_planner" value="false" />  
+    <!--<arg name="map_topic" value="/worldmodel_main/grid_map_low_level" />-->
+    <arg name="map_topic" value="/dynamic_map" />
+  </include>
+  
+  <include file="$(find vehicle_controller)/launch/bertl_controller.launch">
+    <arg name="state_topic" value="/odom" />
+  </include>
+  
+  <rosparam file="$(find hector_tracked_vehicles_self_filter)/config/self_filter_hector_tracker.yaml" command="load" ns="nav_lidar_self_filter_lidar" />    
+  <include file="$(find hector_sensor_proc_launch)/launch/lidar_proc.launch">
+    <arg name="scan_topic" value="/spin_laser/scan"/>
+  </include>
+  
+  <node pkg="vigir_cloud_to_planar_scan" type="periodic_cloud_aggregator_node" name="laserscan_to_aggregated_cloud" output="screen" respawn="true">
+    <remap from="cloud" to="/scan_cloud_filtered" />
+    <remap from="cloud_out" to="/scan_cloud_aggregated" />    
+    <param name="publish_frequency_hz" value="1" />
+    <param name="target_frame" value="odom" />
+  </node>
+  
+  <include file="$(find hector_onboard_launch)/launch/geometry_worldmodel.launch"/>
+
+  <include file="$(find hector_onboard_launch)/launch/thermal_proc.launch"/>
+  
+  <include file="$(find hector_onboard_launch)/launch/perception.launch"/>
+  
+  <include file="$(find hector_onboard_launch)/launch/trajectory_server.launch"/>
+  
+  <include file="$(find hector_camera_joint_controller)/launch/hector_roll_tilt_lidar_mount.launch"/>
+  <include file="$(find hector_camera_joint_controller)/launch/hector_pan_tilt_sensor_head.launch"/>
+  
+  <include file="$(find elevation_mapping)/launch/hector_tracker_setup.launch"/>
+ 
+  
+  <!--<include file="$(find argo_onboard_launch)/launch/icp_mapper.launch"/>-->
+  <!--<include file="$(find argo_onboard_launch)/launch/worldmodel.launch"/>-->
+  
+  <!--<include file="$(find elevation_mapping)/launch/argo_setup.launch"/>-->
+
+  <!--<include file="$(find navigation_collision_checker)/launch/default.launch"/>-->
+
+  <!--<include file="$(find flexbe_launch)/launch/behavior_onboard.launch"/>-->
+
+  <!-- Standard heat detection (not used for ARGOS -->
+  <!--<include file="$(find hector_heat_detection)/launch/heat_detection.launch" />-->
+
+  <!--<include file="$(find vigir_simple_joint_pan)/launch/joint_pan_sub.launch"/>-->
+<!--
+  <include file="$(find argo_detection_image_server)/launch/detection_image_server.launch" />
+  <include file="$(find argo_mission_report)/launch/mission_report.launch" />
+  <include file="$(find argo_event_monitor)/launch/event_monitor.launch" />
+  <include file="$(find argo_path_annotator)/launch/path_annotator.launch" />
+-->
+</launch>
