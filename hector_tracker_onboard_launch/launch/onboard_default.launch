@@ -64,6 +64,8 @@
   </node>
   
   <include file="$(find hector_onboard_launch)/launch/geometry_worldmodel.launch"/>
+  
+  <include file="$(find hector_onboard_launch)/launch/geotiff_worldmodel.launch"/>
 
   <include file="$(find hector_onboard_launch)/launch/thermal_proc.launch"/>
   
