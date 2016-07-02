@@ -47,14 +47,14 @@
     <arg name="scan_topic" value="/spin_laser/scan"/>
   </include>
   
-  <rosparam file="$(find hector_tracked_vehicles_self_filter)/config/self_filter_hector_tracker.yaml" command="load" ns="stab_lidar_self_filter_lidar" />    
+<!--  <rosparam file="$(find hector_tracked_vehicles_self_filter)/config/self_filter_hector_tracker.yaml" command="load" ns="stab_lidar_self_filter_lidar" />    
   <include file="$(find hector_sensor_proc_launch)/launch/lidar_proc.launch">
     <arg name="scan_topic" value="/stab_laser/scan"/>
     
     <arg name="node_name_prefix" value="stab_lidar_" />
     <arg name="scan_cloud_topic" value="/stab_scan_cloud" />
     <arg name="scan_cloud_filtered_topic" value="/stab_scan_cloud_filtered" />
-  </include>  
+  </include>  -->
   
   <node pkg="vigir_cloud_to_planar_scan" type="periodic_cloud_aggregator_node" name="laserscan_to_aggregated_cloud" output="screen" respawn="true">
     <remap from="cloud" to="/scan_cloud_filtered" />
