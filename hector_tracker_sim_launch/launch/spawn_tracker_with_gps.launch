@@ -9,5 +9,4 @@
 
   <include file="$(find hector_nav_launch)/launch/standard_gps.launch"/> 
   
-  <node pkg="topic_tools" type="relay" name="relay_map_topic" args="/worldmodel_main/grid_map_low_level /scanmatcher_map" />
 </launch>
