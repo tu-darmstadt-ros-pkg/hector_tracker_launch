@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <include file="$(find hector_tracker_gazebo_launch)/launch/spawn_default.launch"/> 
+  
+  <include file="$(find hector_tracker_onboard_launch)/launch/onboard_default.launch"/> 
+    
+
+  <include file="$(find hector_nav_launch)/launch/standard_gps.launch"/> 
+</launch>
