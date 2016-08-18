@@ -60,7 +60,7 @@
   <node pkg="vigir_cloud_to_planar_scan" type="periodic_cloud_aggregator_node" name="laserscan_to_aggregated_cloud" output="screen" respawn="true">
     <remap from="cloud" to="/scan_cloud_filtered" />
     <remap from="cloud_out" to="/scan_cloud_aggregated" />    
-    <param name="publish_frequency_hz" value="1" />
+    <param name="publish_frequency_hz" value="0.22" />
     <param name="target_frame" value="odom" />
   </node>
   
@@ -79,7 +79,7 @@
 
   <include file="$(find flexbe_onboard)/launch/behavior_onboard.launch" />
   
-  <include file="$(find elevation_mapping)/launch/hector_tracker_setup.launch"/>
+<!--  <include file="$(find elevation_mapping)/launch/hector_tracker_setup.launch"/>-->
  
   
   <!--<include file="$(find argo_onboard_launch)/launch/icp_mapper.launch"/>-->
