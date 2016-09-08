@@ -43,10 +43,7 @@
     <arg name="state_topic" value="/odom" />
   </include>
   
-  <rosparam file="$(find hector_tracked_vehicles_self_filter)/config/self_filter_hector_tracker.yaml" command="load" ns="nav_lidar_self_filter_lidar" />    
-  <include file="$(find hector_sensor_proc_launch)/launch/lidar_proc.launch">
-    <arg name="scan_topic" value="/spin_laser/scan"/>
-  </include>
+  <include file="$(find hector_tracker_onboard_launch)/launch/lidar_proc_spin_lidar.launch"/>
   
   <rosparam file="$(find hector_tracked_vehicles_self_filter)/config/self_filter_hector_tracker.yaml" command="load" ns="stab_lidar_self_filter_lidar" />    
   <include file="$(find hector_sensor_proc_launch)/launch/lidar_proc.launch">
