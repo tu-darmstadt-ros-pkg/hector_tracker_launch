@@ -4,11 +4,14 @@
   <arg name="s_x_pos" default="0.5" />
   <arg name="s_y_pos" default="0" />
   <arg name="s_z_pos" default="0.2" />
+  
+  <arg name="error_model" default="false" />
 
   <include file="$(find hector_tracker_gazebo_launch)/launch/spawn_default.launch">
     <arg name="spawn_x_pos" value="$(arg s_x_pos)" />
     <arg name="spawn_y_pos" value="$(arg s_y_pos)" />
     <arg name="spawn_z_pos" value="$(arg s_z_pos)" />
+    <arg name="error_model" value="$(arg error_model)" />
   </include>
   
   <include file="$(find hector_tracker_onboard_launch)/launch/onboard_default.launch"/> 
